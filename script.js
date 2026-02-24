@@ -1,4 +1,20 @@
 /* ============================= */
+/* RANDOM BACKGROUND ON RELOAD */
+/* ============================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const backgrounds = ["bg-1", "bg-2", "bg-3", "bg-4"];
+
+  document.body.classList.remove(...backgrounds);
+
+  const randomIndex = Math.floor(Math.random() * backgrounds.length);
+  const selectedClass = backgrounds[randomIndex];
+
+  document.body.classList.add(selectedClass);
+});
+
+
+/* ============================= */
 /* ELEMENTS */
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task");
@@ -10,6 +26,7 @@ const newFactBtn = document.getElementById("new-fact");
 
 const TASKS_KEY = "snacky_tasks";
 let tasks = JSON.parse(localStorage.getItem(TASKS_KEY)) || [];
+
 
 /* ============================= */
 /* RENDER TASKS */
@@ -42,6 +59,7 @@ function renderTasks() {
 
     li.addEventListener("dragend", (e) => {
       li.classList.remove("dragging");
+
       const rect = trashBin.getBoundingClientRect();
 
       if (
@@ -60,6 +78,7 @@ function renderTasks() {
 
 renderTasks();
 
+
 /* ============================= */
 /* ADD TASK */
 addTaskBtn.addEventListener("click", () => {
@@ -75,12 +94,14 @@ taskInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") addTaskBtn.click();
 });
 
+
 /* ============================= */
 /* COMPLETE TASK */
 window.toggleTask = function(index) {
   tasks[index].completed = !tasks[index].completed;
   renderTasks();
 };
+
 
 /* ============================= */
 /* REMOVE SINGLE TASK */
@@ -92,10 +113,10 @@ function removeTask(index, liElement) {
     renderTasks();
   }, 700);
 
-  // Shake trash bin
   trashBin.classList.add("shake");
   setTimeout(() => trashBin.classList.remove("shake"), 400);
 }
+
 
 /* ============================= */
 /* FACTS */
