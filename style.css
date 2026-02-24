@@ -267,3 +267,29 @@ body {
   background: var(--accent);
   color: #06221d;
 }
+
+/* ============================= */
+/* CRUMPLE ANIMATION */
+/* ============================= */
+
+@keyframes crumple {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(0.9) rotate(5deg);
+  }
+  70% {
+    transform: scale(0.6) rotate(-10deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+.todo-item.crumple {
+  animation: crumple 0.6s ease forwards;
+}
