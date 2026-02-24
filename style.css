@@ -18,10 +18,14 @@
 
 html, body {
   height: 100%;
-  overflow: hidden;
+  margin: 0;
 }
 
 body {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   font-family: "Inter", system-ui, sans-serif;
   background: var(--bg);
@@ -33,7 +37,11 @@ body {
 /* ================================================= */
 
 .todo-wrapper {
-  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
   display: flex;
   justify-content: center;
   align-items: center;
@@ -231,15 +239,15 @@ body {
 }
 
 /* ================================================= */
-/* FLOATING TRASH BIN */
+/* FLOATING TRASH BIN (FIXED + ALWAYS VISIBLE) */
 /* ================================================= */
 
 #trash-bin {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 70px;
-  height: 70px;
+  bottom: 24px;
+  right: 24px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: #132421;
   border: 2px solid var(--accent);
@@ -247,9 +255,11 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--accent);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   cursor: pointer;
-  transition: 0.3s ease;
+  z-index: 9999; /* Critical fix */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: 0.25s ease;
 }
 
 #trash-bin:hover {
