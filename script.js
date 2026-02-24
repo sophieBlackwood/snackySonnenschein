@@ -1,18 +1,21 @@
 /* ============================= */
 /* RANDOM BACKGROUND ON RELOAD */
 /* ============================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-  const backgrounds = ["bg-1", "bg-2", "bg-3", "bg-4"];
+  const backgrounds = [
+    "bg-1", "bg-2", "bg-3", "bg-4", "bg-5",
+    "bg-6", "bg-7", "bg-8", "bg-9", "bg-10", "bg-11"
+  ];
 
+  // Remove any existing background classes
   document.body.classList.remove(...backgrounds);
 
+  // Pick a random background
   const randomIndex = Math.floor(Math.random() * backgrounds.length);
   const selectedClass = backgrounds[randomIndex];
 
   document.body.classList.add(selectedClass);
 });
-
 
 /* ============================= */
 /* ELEMENTS */
@@ -26,7 +29,6 @@ const newFactBtn = document.getElementById("new-fact");
 
 const TASKS_KEY = "snacky_tasks";
 let tasks = JSON.parse(localStorage.getItem(TASKS_KEY)) || [];
-
 
 /* ============================= */
 /* RENDER TASKS */
@@ -78,7 +80,6 @@ function renderTasks() {
 
 renderTasks();
 
-
 /* ============================= */
 /* ADD TASK */
 addTaskBtn.addEventListener("click", () => {
@@ -94,14 +95,12 @@ taskInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") addTaskBtn.click();
 });
 
-
 /* ============================= */
 /* COMPLETE TASK */
 window.toggleTask = function(index) {
   tasks[index].completed = !tasks[index].completed;
   renderTasks();
 };
-
 
 /* ============================= */
 /* REMOVE SINGLE TASK */
@@ -116,7 +115,6 @@ function removeTask(index, liElement) {
   trashBin.classList.add("shake");
   setTimeout(() => trashBin.classList.remove("shake"), 400);
 }
-
 
 /* ============================= */
 /* FACTS */
