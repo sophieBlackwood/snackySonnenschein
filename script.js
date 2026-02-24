@@ -80,6 +80,7 @@ window.toggleTask = function(index) {
   tasks[index].completed = !tasks[index].completed;
   renderTasks();
   launchConfetti();
+  launchAcorns();
 };
 
 
@@ -162,3 +163,31 @@ newFactBtn.addEventListener("click", showRandomFact);
 
 // Show one on load
 showRandomFact();
+
+/* ============================= */
+/* FALLING ACORNS */
+/* ============================= */
+
+.acorn {
+  position: fixed;
+  width: 16px;
+  height: 24px;
+  background: url('https://i.imgur.com/xG6b3dP.png') no-repeat center / contain;
+  pointer-events: none;
+  z-index: 9999;
+  animation: fallAcorn 1.2s linear forwards;
+}
+
+@keyframes fallAcorn {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(60px) rotate(15deg);
+  }
+  100% {
+    transform: translateY(200px) rotate(45deg);
+    opacity: 0;
+  }
+}
