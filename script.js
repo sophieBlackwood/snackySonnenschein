@@ -1,7 +1,6 @@
 /* ============================= */
 /* ELEMENTS */
 /* ============================= */
-
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task");
 const taskList = document.getElementById("task-list");
@@ -14,11 +13,9 @@ const TASKS_KEY = "snacky_tasks";
 
 let tasks = JSON.parse(localStorage.getItem(TASKS_KEY)) || [];
 
-
 /* ============================= */
 /* RENDER TASKS */
 /* ============================= */
-
 function renderTasks() {
   taskList.innerHTML = "";
 
@@ -26,9 +23,7 @@ function renderTasks() {
     const li = document.createElement("li");
     li.className = "todo-item";
 
-    if (task.completed) {
-      li.classList.add("completed");
-    }
+    if (task.completed) li.classList.add("completed");
 
     li.innerHTML = `
       <span>${task.text}</span>
@@ -47,100 +42,73 @@ function renderTasks() {
 
 renderTasks();
 
-
 /* ============================= */
 /* ADD TASK */
 /* ============================= */
-
 addTaskBtn.addEventListener("click", () => {
   const text = taskInput.value.trim();
   if (!text) return;
 
-  tasks.push({
-    text: text,
-    completed: false
-  });
-
+  tasks.push({ text, completed: false });
   taskInput.value = "";
   renderTasks();
 });
 
 taskInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    addTaskBtn.click();
-  }
+  if (e.key === "Enter") addTaskBtn.click();
 });
 
-
 /* ============================= */
-/* COMPLETE TASK */
+/* COMPLETE TASK + ACORNS */
 /* ============================= */
-
 window.toggleTask = function(index) {
   tasks[index].completed = !tasks[index].completed;
   renderTasks();
-  launchConfetti();
   launchAcorns();
 };
 
-
 /* ============================= */
-/* CONFETTI */
+/* FALLING ACORNS */
 /* ============================= */
+function launchAcorns() {
+  for (let i = 0; i < 5; i++) {
+    const acorn = document.createElement("div");
+    acorn.classList.add("acorn");
 
-function launchConfetti() {
-  for (let i = 0; i < 20; i++) {
-    const piece = document.createElement("div");
-    piece.classList.add("confetti");
+    const rect = taskList.getBoundingClientRect();
+    acorn.style.left = rect.left + Math.random() * rect.width + "px";
+    acorn.style.top = rect.top + "px";
 
-    piece.style.left = Math.random() * window.innerWidth + "px";
-    piece.style.top = "50%";
+    document.body.appendChild(acorn);
 
-    const colors = ["#FFD700", "#FFEE58", "#FFA726", "#FFF176"];
-    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-
-    document.body.appendChild(piece);
-
-    setTimeout(() => {
-      piece.remove();
-    }, 1000);
+    setTimeout(() => acorn.remove(), 1800);
   }
 }
-
 
 /* ============================= */
 /* TRASH ALL (CRUMPLE + CLEAR) */
 /* ============================= */
-
 trashBin.addEventListener("click", () => {
   const items = document.querySelectorAll(".todo-item");
-
   if (items.length === 0) return;
 
-  // Shake trash can
   trashBin.classList.add("shake");
 
-  // Crumple animation
   items.forEach((item, i) => {
-    setTimeout(() => {
-      item.classList.add("crumple");
-    }, i * 100);
+    setTimeout(() => item.classList.add("crumple"), i * 100);
   });
 
-  // Clear after animation
   setTimeout(() => {
     tasks = [];
     renderTasks();
     trashBin.classList.remove("shake");
-    launchConfetti(); // fun bonus effect
+    launchAcorns(); // fun reward
   }, 800);
 });
-
 
 /* ============================= */
 /* SQUIRREL FACTS */
 /* ============================= */
-
 const squirrelFacts = [
   "Squirrels plant thousands of trees every year by forgetting where they buried acorns.",
   "A squirrel’s front teeth never stop growing.",
@@ -160,34 +128,4 @@ function showRandomFact() {
 }
 
 newFactBtn.addEventListener("click", showRandomFact);
-
-// Show one on load
 showRandomFact();
-
-/* ============================= */
-/* FALLING ACORNS */
-/* ============================= */
-
-.acorn {
-  position: fixed;
-  width: 16px;
-  height: 24px;
-  background: url('https://i.imgur.com/xG6b3dP.png') no-repeat center / contain;
-  pointer-events: none;
-  z-index: 9999;
-  animation: fallAcorn 1.2s linear forwards;
-}
-
-@keyframes fallAcorn {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(60px) rotate(15deg);
-  }
-  100% {
-    transform: translateY(200px) rotate(45deg);
-    opacity: 0;
-  }
-}
