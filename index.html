@@ -4,8 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Snacky Sonnenschein</title>
+
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -15,26 +21,45 @@
   <div class="todo-card">
 
     <h1 class="lighthouse-title">☀️ Snacky Sonnenschein</h1>
+    <p class="subtitle">Small steps. Steady sunshine.</p>
 
+    <!-- INPUT -->
     <div class="todo-input-group">
-      <input type="text" id="task-input" placeholder="What needs doing?" autocomplete="off"/>
-      <button id="add-task" class="btn">
+      <input 
+        type="text" 
+        id="task-input" 
+        placeholder="What needs doing?" 
+        autocomplete="off"
+      />
+      <button id="add-task" class="btn" aria-label="Add task">
         <i class="fa-solid fa-plus"></i>
       </button>
     </div>
 
+    <!-- TASK LIST -->
     <ul id="task-list" class="todo-list"></ul>
+
     <hr class="divider">
 
+    <!-- SQUIRREL SECTION -->
     <div class="squirrel-section">
       <h2>🐿 Wizard Squirrel on a Roomba</h2>
       <p id="squirrel-fact"></p>
-      <button id="new-fact" class="btn-secondary">More!</button>
+      <button id="new-fact" class="btn-secondary">
+        More!
+      </button>
     </div>
 
   </div>
 </main>
 
+<!-- FLOATING TRASH BIN -->
+<div id="trash-bin" aria-label="Clear all tasks">
+  <i class="fa-solid fa-trash"></i>
+</div>
+
+<!-- Script -->
 <script src="script.js"></script>
+
 </body>
 </html>
