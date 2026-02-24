@@ -4,12 +4,11 @@
 
 :root {
   --bg: #0f1f1d;          
-  --card-bg: #1a322f;     
   --text: #F2F2EA;        
   --accent: #FF9F1C;      
   --accent-light: #FFB94D;
-  --border: #2e4a42;      
-  --shadow: 0 18px 60px rgba(0,0,0,0.4);
+  --border: rgba(255,255,255,0.08);
+  --shadow: 0 25px 70px rgba(0,0,0,0.45);
 }
 
 
@@ -53,6 +52,11 @@ body {
   transition: background 0.6s ease-in-out;
 }
 
+
+/* ================================================= */
+/* GLASSY TODO CARD */
+/* ================================================= */
+
 .todo-wrapper {
   width: 100%;
   display: flex;
@@ -64,10 +68,20 @@ body {
 .todo-card {
   width: 100%;
   max-width: 520px;
-  background: var(--card-bg);
   padding: 2.5rem;
   border-radius: 28px;
-  box-shadow: var(--shadow);
+
+  /* GLASS EFFECT */
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid var(--border);
+
+  /* Depth */
+  box-shadow:
+    0 25px 70px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 
@@ -104,7 +118,7 @@ body {
   border-radius: 16px;
   border: 1px solid var(--border);
   font-size: 0.95rem;
-  background: #1e3a35;
+  background: rgba(0,0,0,0.25);
   color: var(--text);
   outline: none;
 }
@@ -147,7 +161,7 @@ body {
   justify-content: space-between;
   padding: 0.9rem 1rem;
   margin-bottom: 0.8rem;
-  background: #2a4a42;
+  background: rgba(0,0,0,0.25);
   border-radius: 16px;
   border: 1px solid var(--border);
   transition: 0.2s ease;
@@ -239,22 +253,25 @@ body {
 
 
 /* ================================================= */
-/* TRASH BIN */
+/* TRASH BIN - LARGER & POLISHED */
 /* ================================================= */
 
 #trash-bin {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 1.8rem;
+  bottom: 28px;
+  right: 28px;
+  font-size: 3rem;
+  padding: 0.5rem;  
   cursor: pointer;
   z-index: 1000;
   color: var(--accent);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.4));
 }
 
 #trash-bin:hover {
-  transform: scale(1.15);
+  transform: scale(1.25);
+  filter: drop-shadow(0 8px 22px rgba(0,0,0,0.5));
 }
 
 @keyframes shake {
