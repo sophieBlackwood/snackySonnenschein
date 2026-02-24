@@ -1,50 +1,39 @@
 /* ================================================= */
-/* ROOT */
+/* ROOT / COLORS */
 /* ================================================= */
-
 :root {
-  --bg: #0f1f1d;
-  --card-bg: #162826;
-  --text: #F2FBFA;
-  --accent: #4FB29F;
-  --accent-light: #7fd3c2;
-  --border: #1f3a37;
-  --shadow: 0 18px 60px rgba(0,0,0,0.5);
+  --bg: #FFF5E6;          /* Soft creamy background */
+  --card-bg: #FFDFAE;     /* Warm golden card */
+  --text: #4B2E05;        /* Deep brown text */
+  --accent: #FF8C42;      /* Pumpkin orange accent */
+  --accent-light: #FFB374;/* Lighter accent */
+  --border: #E6C99F;      /* Light brown border */
+  --shadow: 0 18px 60px rgba(0,0,0,0.2);
 }
 
 /* ================================================= */
-/* GLOBAL LOCK (NO SCROLL) */
+/* BODY / LAYOUT */
 /* ================================================= */
-
 html, body {
   height: 100%;
   margin: 0;
+  overflow: hidden;
 }
 
 body {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
   font-family: "Inter", system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-/* ================================================= */
-/* LAYOUT */
-/* ================================================= */
 
 .todo-wrapper {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 2rem;
 }
 
@@ -60,7 +49,6 @@ body {
 /* ================================================= */
 /* HEADER */
 /* ================================================= */
-
 .lighthouse-title {
   margin: 0;
   font-size: 1.9rem;
@@ -70,13 +58,12 @@ body {
 .subtitle {
   margin-top: 0.4rem;
   font-size: 0.9rem;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 /* ================================================= */
-/* INPUT */
+/* INPUT GROUP */
 /* ================================================= */
-
 .todo-input-group {
   display: flex;
   margin-top: 1.8rem;
@@ -103,7 +90,7 @@ body {
   border: none;
   padding: 0 1.2rem;
   border-radius: 16px;
-  color: #06221d;
+  color: #FFF5E6;
   cursor: pointer;
   transition: 0.2s ease;
 }
@@ -116,7 +103,6 @@ body {
 /* ================================================= */
 /* TASK LIST */
 /* ================================================= */
-
 .todo-list {
   list-style: none;
   padding: 0;
@@ -131,7 +117,7 @@ body {
   justify-content: space-between;
   padding: 0.9rem 1rem;
   margin-bottom: 0.8rem;
-  background: #132421;
+  background: #FFE2B3;
   border-radius: 16px;
   border: 1px solid var(--border);
   transition: 0.2s ease;
@@ -142,7 +128,7 @@ body {
 }
 
 .todo-item.completed {
-  opacity: 0.5;
+  opacity: 0.6;
   text-decoration: line-through;
 }
 
@@ -154,51 +140,8 @@ body {
 }
 
 /* ================================================= */
-/* CRUMPLE ANIMATION */
-/* ================================================= */
-
-.crumple {
-  animation: crumple 0.7s forwards ease-in;
-}
-
-@keyframes crumple {
-  0% {
-    transform: rotate(0deg) scale(1);
-    opacity: 1;
-  }
-  40% {
-    transform: rotate(8deg) scale(0.85);
-  }
-  100% {
-    transform: translate(350px, 350px) rotate(35deg) scale(0.2);
-    opacity: 0;
-  }
-}
-
-/* ================================================= */
-/* CONFETTI */
-/* ================================================= */
-
-.confetti {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-  pointer-events: none;
-  animation: fall 1s linear forwards;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(250px) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-/* ================================================= */
 /* DIVIDER */
 /* ================================================= */
-
 .divider {
   margin: 2rem 0;
   border: none;
@@ -207,9 +150,8 @@ body {
 }
 
 /* ================================================= */
-/* SQUIRREL SECTION */
+/* SQUIRREL FACTS */
 /* ================================================= */
-
 .squirrel-section h2 {
   font-size: 1rem;
   margin-bottom: 0.8rem;
@@ -235,65 +177,48 @@ body {
 
 .btn-secondary:hover {
   background: var(--accent);
-  color: #06221d;
+  color: #FFF5E6;
 }
 
 /* ================================================= */
-/* FLOATING TRASH BIN (FIXED + ALWAYS VISIBLE) */
-/* ================================================= */
-
-#trash-bin {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: #132421;
-  border: 2px solid var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  font-size: 1.3rem;
-  cursor: pointer;
-  z-index: 9999; /* Critical fix */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  transition: 0.25s ease;
-}
-
-#trash-bin:hover {
-  transform: scale(1.1);
-  background: var(--accent);
-  color: #06221d;
-}
-
-/* ============================= */
 /* CRUMPLE ANIMATION */
-/* ============================= */
-
+/* ================================================= */
 @keyframes crumple {
   0% {
     transform: scale(1) rotate(0deg);
     opacity: 1;
   }
   40% {
-    transform: scale(0.9) rotate(5deg);
-  }
-  70% {
-    transform: scale(0.6) rotate(-10deg);
-    opacity: 0.7;
+    transform: scale(0.85) rotate(5deg);
   }
   100% {
-    transform: scale(0) rotate(15deg);
+    transform: translate(350px, 350px) rotate(25deg) scale(0.2);
     opacity: 0;
   }
 }
 
 .todo-item.crumple {
-  animation: crumple 0.6s ease forwards;
+  animation: crumple 0.7s forwards ease-in;
 }
 
+/* ================================================= */
+/* TRASH BIN */
+/* ================================================= */
+#trash-bin {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+
+#trash-bin:hover {
+  transform: scale(1.15);
+}
+
+/* Trash shake */
 @keyframes shake {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(-10deg); }
@@ -305,10 +230,9 @@ body {
   animation: shake 0.4s ease;
 }
 
-/* ============================= */
+/* ================================================= */
 /* FALLING ACORNS */
-/* ============================= */
-
+/* ================================================= */
 .acorn {
   position: fixed;
   width: 16px;
@@ -316,19 +240,28 @@ body {
   background: url('https://i.imgur.com/xG6b3dP.png') no-repeat center / contain;
   pointer-events: none;
   z-index: 9999;
-  animation: fallAcorn 1.2s linear forwards;
+  animation: fallAcornBounce 1.8s forwards;
 }
 
-@keyframes fallAcorn {
+@keyframes fallAcornBounce {
   0% {
     transform: translateY(0px) rotate(0deg);
     opacity: 1;
   }
-  50% {
-    transform: translateY(60px) rotate(15deg);
+  60% {
+    transform: translateY(180px) rotate(20deg);
+  }
+  75% {
+    transform: translateY(160px) rotate(25deg);
+  }
+  85% {
+    transform: translateY(180px) rotate(30deg);
+  }
+  95% {
+    transform: translateY(175px) rotate(35deg);
   }
   100% {
-    transform: translateY(200px) rotate(45deg);
-    opacity: 0;
+    transform: translateY(180px) rotate(40deg);
+    opacity: 1;
   }
 }
