@@ -3,8 +3,7 @@
 /* ============================= */
 document.addEventListener("DOMContentLoaded", () => {
   const backgrounds = [
-    "bg-1", "bg-2", "bg-3", "bg-4", "bg-5",
-    "bg-6", "bg-7", "bg-8", "bg-9", "bg-10", "bg-11"
+    "bg-1","bg-2","bg-3","bg-4","bg-5","bg-6","bg-7","bg-8","bg-9","bg-10","bg-11"
   ];
 
   // Remove any existing background classes
@@ -12,9 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Pick a random background
   const randomIndex = Math.floor(Math.random() * backgrounds.length);
-  const selectedClass = backgrounds[randomIndex];
-
-  document.body.classList.add(selectedClass);
+  document.body.classList.add(backgrounds[randomIndex]);
 });
 
 /* ============================= */
@@ -64,11 +61,13 @@ function renderTasks() {
 
       const rect = trashBin.getBoundingClientRect();
 
+      // Enlarged hit area for easier drop
+      const padding = 20; // 20px outside the bin
       if (
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom
+        e.clientX >= rect.left - padding &&
+        e.clientX <= rect.right + padding &&
+        e.clientY >= rect.top - padding &&
+        e.clientY <= rect.bottom + padding
       ) {
         removeTask(index, li);
       }
