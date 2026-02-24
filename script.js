@@ -43,7 +43,7 @@ function renderTasks() {
     li.addEventListener("dragend", (e) => {
       li.classList.remove("dragging");
       const rect = trashBin.getBoundingClientRect();
-      // Use clientX/clientY instead of pageX/pageY because no scrolling
+
       if (
         e.clientX >= rect.left &&
         e.clientX <= rect.right &&
@@ -76,33 +76,11 @@ taskInput.addEventListener("keypress", (e) => {
 });
 
 /* ============================= */
-/* COMPLETE TASK + ACORNS */
+/* COMPLETE TASK */
 window.toggleTask = function(index) {
   tasks[index].completed = !tasks[index].completed;
   renderTasks();
-  launchAcorns();
 };
-
-/* ============================= */
-/* FALLING ACORNS */
-function launchAcorns() {
-  for (let i = 0; i < 5; i++) {
-    const acorn = document.createElement("i");
-    acorn.classList.add("fa-solid", "fa-acorn", "acorn");
-
-    acorn.style.left = Math.random() * window.innerWidth + "px";
-    acorn.style.top = "-20px";
-    acorn.style.fontSize = 12 + Math.random() * 14 + "px";
-    acorn.style.animationDuration = 2 + Math.random() + "s";
-
-    const sway = Math.random() > 0.5 ? 1 : -1;
-    acorn.style.setProperty("--sway-dir", sway);
-
-    document.body.appendChild(acorn);
-
-    setTimeout(() => acorn.remove(), 2500);
-  }
-}
 
 /* ============================= */
 /* REMOVE SINGLE TASK */
@@ -112,7 +90,6 @@ function removeTask(index, liElement) {
   setTimeout(() => {
     tasks.splice(index, 1);
     renderTasks();
-    launchAcorns();
   }, 700);
 
   // Shake trash bin
@@ -121,35 +98,28 @@ function removeTask(index, liElement) {
 }
 
 /* ============================= */
-/* SQUIRREL FACTS */
+/* FACTS */
 const squirrelFacts = [
-  // 🐿️ SQUIRRELS (feral energy)
   "Squirrels can survive falls from extreme heights because their terminal velocity is low.",
   "A squirrel’s teeth never stop growing — ever.",
   "Squirrels ankles rotate 180 degrees so they can descend trees headfirst like tiny parkour demons.",
   "Grey squirrels can remember thousands of nut locations.",
   "In some cities, squirrels recognize humans who feed them.",
   "A group of squirrels is called a scurry.",
-
-  // 🩰 DANCE / BALLET
   "Pointe shoes contain no wood — just glue, fabric, and pain.",
   "Male ballet dancers lift partners that can weigh more than they do.",
   "Professional dancers can have resting heart rates similar to elite athletes.",
   "Some contemporary choreography is structured using Fibonacci spirals.",
   "Ballet originated in royal courts before it was performed on stage.",
   "Your brain rewires faster when learning choreography than when memorizing text.",
-
-  // 💻 CODE
   "The first computer bug was an actual moth trapped in hardware (1947).",
   "JavaScript was created in 10 days and now runs the internet.",
   "A missing semicolon has caused billion-dollar outages.",
   "CSS specificity is calculated as a weighted hierarchy, not a single number.",
-  "There are more possible chess games than atoms in the observable universe — and computers can calculate many of them.",
+  "There are more possible chess games than atoms in the observable universe.",
   "The Apollo 11 guidance computer had less processing power than a calculator.",
   "Indentation errors have launched rockets incorrectly.",
   "The word 'robot' comes from a Czech word meaning forced labor.",
-
-  // 🎲 D&D
   "Critical hits were not in the original D&D rules.",
   "Alignment used to be only Law vs Chaos — no Good or Evil.",
   "The Beholder was inspired by a nightmare.",
@@ -158,8 +128,6 @@ const squirrelFacts = [
   "Dice probability curves change drastically between a d20 and 3d6.",
   "Some campaigns have lasted over 30 real-world years.",
   "Mimics exist because players kept trusting treasure chests.",
-
-  // 🧠 PSYCHOLOGY
   "Your brain predicts reality before you consciously perceive it.",
   "Memory is reconstructed every time you recall it.",
   "Rejection activates the same brain regions as physical pain.",
@@ -169,8 +137,6 @@ const squirrelFacts = [
   "Sleep deprivation can mimic symptoms of anxiety disorders.",
   "Humans are terrible at intuitively understanding probability.",
   "Confidence and competence are only weakly correlated.",
-
-  // 🔥 EXTRA CHAOTIC
   "Octopuses have three hearts and blue blood.",
   "Bananas are berries. Strawberries are not.",
   "Sharks existed before trees.",
@@ -178,10 +144,8 @@ const squirrelFacts = [
   "There are more trees on Earth than stars in the Milky Way.",
   "Time moves slightly faster on a mountain than at sea level.",
   "You are statistically more likely to die taking a selfie than from a shark attack.",
-
-  // LUKE
   "Have you eaten today?",
-  "Wingardium Leviosa!",
+  "Wingardium Leviosa!"
 ];
 
 function showRandomFact() {
