@@ -2,12 +2,12 @@
 /* ROOT / COLORS */
 /* ================================================= */
 :root {
-  --bg: #FFF5E6;          /* Soft creamy background */
-  --card-bg: #FFDFAE;     /* Warm golden card */
-  --text: #4B2E05;        /* Deep brown text */
-  --accent: #FF8C42;      /* Pumpkin orange accent */
-  --accent-light: #FFB374;/* Lighter accent */
-  --border: #E6C99F;      /* Light brown border */
+  --bg: #FFF5E6;          
+  --card-bg: #FFDFAE;     
+  --text: #4B2E05;        
+  --accent: #FF8C42;      
+  --accent-light: #FFB374;
+  --border: #E6C99F;      
   --shadow: 0 18px 60px rgba(0,0,0,0.2);
 }
 
@@ -121,10 +121,7 @@ body {
   border-radius: 16px;
   border: 1px solid var(--border);
   transition: 0.2s ease;
-}
-
-.todo-item:hover {
-  transform: translateY(-2px);
+  cursor: grab;
 }
 
 .todo-item.completed {
@@ -153,7 +150,7 @@ body {
 /* SQUIRREL FACTS */
 /* ================================================= */
 .squirrel-section {
-  min-height: 60px; /* lock height */
+  min-height: 60px; 
 }
 
 #squirrel-fact {
@@ -161,10 +158,10 @@ body {
   opacity: 0.85;
   line-height: 1.5;
   min-height: 48px;
-  max-height: 60px;  /* lock max height */
+  max-height: 60px;  
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* max 3 lines */
+  -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
