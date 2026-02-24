@@ -1,7 +1,4 @@
-/* ========================================= */
-/* ROOT VARIABLES */
-/* ========================================= */
-
+/* ---- ROOT VARIABLES ---- */
 :root {
   --bg: #f4fbfa;
   --card-bg: #1f4e4a;
@@ -14,7 +11,6 @@
   --radius: 16px;
   --transition: 0.3s ease;
 }
-
 body.dark {
   --bg: #0f2a28;
   --card-bg: #163c39;
@@ -24,35 +20,25 @@ body.dark {
   --muted: #a6c9c5;
 }
 
-/* ========================================= */
-/* GLOBAL RESET */
-/* ========================================= */
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* ---- GLOBAL ---- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   background: var(--bg);
   font-family: "proxima-nova", sans-serif;
   color: var(--text-dark);
   transition: background var(--transition), color var(--transition);
   min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* ========================================= */
-/* FLOATING THEME BUTTON */
-/* ========================================= */
-
+/* ---- FLOATING THEME ---- */
 #floating-buttons {
   position: fixed;
   top: 1.5rem;
   right: 1.5rem;
   z-index: 2000;
 }
-
 #floating-buttons button {
   background: var(--accent);
   color: white;
@@ -63,27 +49,18 @@ body {
   font-size: 1rem;
   transition: transform var(--transition), background var(--transition);
 }
-
 #floating-buttons button:hover {
   background: var(--accent-light);
   transform: translateY(-2px);
 }
 
-/* ========================================= */
-/* MAIN LAYOUT */
-/* ========================================= */
-
+/* ---- TODO CARD ---- */
 .todo-wrapper {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 6rem 1.5rem 3rem;
 }
-
-/* ========================================= */
-/* TODO CARD */
-/* ========================================= */
-
 .todo-card {
   background: var(--card-bg);
   color: var(--always-light-text);
@@ -94,33 +71,25 @@ body {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
   text-align: center;
   transition: transform var(--transition);
+  position: relative;
+  overflow: hidden;
 }
-
-.todo-card:hover {
-  transform: translateY(-3px);
-}
-
 .lighthouse-title {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
-
 .subtitle {
   color: var(--accent-light);
   margin-bottom: 2rem;
   font-size: 0.95rem;
 }
 
-/* ========================================= */
-/* INPUT SECTION */
-/* ========================================= */
-
+/* ---- INPUT ---- */
 .todo-input-group {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
 }
-
 #task-input {
   flex: 1;
   padding: 0.9rem 1rem;
@@ -129,11 +98,6 @@ body {
   outline: none;
   font-size: 1rem;
 }
-
-#task-input:focus {
-  box-shadow: 0 0 0 3px rgba(143, 214, 204, 0.4);
-}
-
 .btn {
   background: var(--accent);
   border: none;
@@ -143,38 +107,18 @@ body {
   cursor: pointer;
   transition: background var(--transition), transform var(--transition);
 }
-
 .btn:hover {
   background: var(--accent-light);
   transform: translateY(-2px);
 }
 
-.btn-secondary {
-  background: transparent;
-  border: 2px solid var(--accent-light);
-  color: var(--accent-light);
-  padding: 0.6rem 1rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.btn-secondary:hover {
-  background: var(--accent-light);
-  color: var(--card-bg);
-}
-
-/* ========================================= */
-/* TASK LIST */
-/* ========================================= */
-
+/* ---- TASK LIST ---- */
 .todo-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-
 .todo-item {
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
@@ -183,46 +127,63 @@ body {
   justify-content: space-between;
   align-items: center;
   transition: transform var(--transition), background var(--transition);
+  position: relative;
+  overflow: hidden;
 }
-
 .todo-item:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255,255,255,0.15);
 }
-
 .task-text {
   flex: 1;
   text-align: left;
   font-size: 0.95rem;
 }
-
 .task-actions {
   display: flex;
   gap: 0.6rem;
 }
-
 .task-actions button {
   background: none;
   border: none;
   color: var(--accent-light);
   font-size: 1rem;
   cursor: pointer;
-  transition: transform var(--transition);
 }
-
-.task-actions button:hover {
-  transform: scale(1.15);
-}
-
 .completed .task-text {
   text-decoration: line-through;
   opacity: 0.6;
 }
 
-/* ========================================= */
-/* REMINDER CARD */
-/* ========================================= */
+/* ---- MOOD ---- */
+.mood-section {
+  margin-top: 2rem;
+}
+.mood-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+.mood-btn {
+  font-size: 1.6rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  padding: 0.6rem;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition);
+}
+.mood-btn:hover {
+  transform: scale(1.2);
+  background: rgba(255,255,255,0.2);
+}
+#mood-display {
+  font-size: 0.95rem;
+  color: var(--accent-light);
+}
 
+/* ---- REMINDER CARD ---- */
 .reminder-card {
   position: fixed;
   bottom: 2rem;
@@ -239,77 +200,22 @@ body {
   transition: opacity 0.4s ease, transform 0.4s ease;
   z-index: 3000;
 }
-
 .reminder-card.hidden {
   opacity: 0;
   pointer-events: none;
   transform: translateX(-50%) translateY(20px);
 }
 
-.reminder-card h3 {
-  margin-bottom: 0.8rem;
-}
-
-.reminder-card p {
-  margin-bottom: 1.2rem;
-  font-size: 0.95rem;
-}
-
-/* ========================================= */
-/* RESPONSIVE DESIGN */
-/* ========================================= */
-
+/* ---- RESPONSIVE ---- */
 @media (max-width: 768px) {
-
-  .todo-card {
-    padding: 2rem 1.5rem;
-  }
-
-  .lighthouse-title {
-    font-size: 1.6rem;
-  }
-
-  .todo-input-group {
-    flex-direction: column;
-  }
-
-  .btn {
-    width: 100%;
-  }
-
-  .task-text {
-    font-size: 0.9rem;
-  }
-
-  #floating-buttons {
-    top: 1rem;
-    right: 1rem;
-  }
+  #floating-buttons { top: 1rem; right: 1rem; }
+  .todo-card { padding: 2rem 1.5rem; }
+  .lighthouse-title { font-size: 1.6rem; }
+  .todo-input-group { flex-direction: column; }
+  .btn { width: 100%; }
 }
 
 @media (max-width: 480px) {
-
-  .todo-wrapper {
-    padding: 5rem 1rem 2rem;
-  }
-
-  .todo-card {
-    padding: 1.5rem 1rem;
-  }
-
-  .lighthouse-title {
-    font-size: 1.4rem;
-  }
-
-  .subtitle {
-    font-size: 0.85rem;
-  }
-
-  .task-text {
-    font-size: 0.85rem;
-  }
-
-  .reminder-card {
-    bottom: 1.2rem;
-  }
+  .todo-card { padding: 1.5rem 1rem; }
+  .lighthouse-title { font-size: 1.4rem; }
 }
