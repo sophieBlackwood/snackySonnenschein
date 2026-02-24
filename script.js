@@ -3,15 +3,27 @@
 /* ============================= */
 document.addEventListener("DOMContentLoaded", () => {
   const backgrounds = [
-    "bg-1","bg-2","bg-3","bg-4","bg-5","bg-6","bg-7","bg-8","bg-9","bg-10","bg-11"
+    "sun1.jpg","sun2.jpg","sun3.jpg","sun4.jpg","sun5.jpg",
+    "sun6.jpg","sun7.jpg","sun8.jpg","sun9.jpg","sun10.jpg","sun11.jpg"
   ];
 
-  // Remove any existing background classes
-  document.body.classList.remove(...backgrounds);
+  // Preload all images for faster display
+  backgrounds.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
 
-  // Pick a random background
+  // Remove any existing bg-x classes
+  document.body.classList.remove(
+    ...document.body.className
+      .split(" ")
+      .filter(c => c.startsWith("bg-"))
+  );
+
+  // Pick a random background only on reload
   const randomIndex = Math.floor(Math.random() * backgrounds.length);
-  document.body.classList.add(backgrounds[randomIndex]);
+  const selectedClass = `bg-${randomIndex + 1}`;
+  document.body.classList.add(selectedClass);
 });
 
 /* ============================= */
@@ -52,17 +64,14 @@ function renderTasks() {
     taskList.appendChild(li);
 
     // Drag events
-    li.addEventListener("dragstart", () => {
-      li.classList.add("dragging");
-    });
+    li.addEventListener("dragstart", () => li.classList.add("dragging"));
 
     li.addEventListener("dragend", (e) => {
       li.classList.remove("dragging");
 
       const rect = trashBin.getBoundingClientRect();
+      const padding = 20; // 20px extra around bin for easier drop
 
-      // Enlarged hit area for easier drop
-      const padding = 20; // 20px outside the bin
       if (
         e.clientX >= rect.left - padding &&
         e.clientX <= rect.right + padding &&
