@@ -43,11 +43,12 @@ function renderTasks() {
     li.addEventListener("dragend", (e) => {
       li.classList.remove("dragging");
       const rect = trashBin.getBoundingClientRect();
+      // Use clientX/clientY instead of pageX/pageY because no scrolling
       if (
-        e.pageX >= rect.left &&
-        e.pageX <= rect.right &&
-        e.pageY >= rect.top &&
-        e.pageY <= rect.bottom
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
       ) {
         removeTask(index, li);
       }
@@ -83,18 +84,17 @@ window.toggleTask = function(index) {
 };
 
 /* ============================= */
-/* FALLING ACORNS (Font Awesome) */
+/* FALLING ACORNS */
 function launchAcorns() {
   for (let i = 0; i < 5; i++) {
     const acorn = document.createElement("i");
     acorn.classList.add("fa-solid", "fa-acorn", "acorn");
 
     acorn.style.left = Math.random() * window.innerWidth + "px";
-    acorn.style.top = "-20px"; // start above screen
-    acorn.style.fontSize = 12 + Math.random() * 12 + "px"; // random size
-    acorn.style.animationDuration = 2 + Math.random() + "s"; // random speed
+    acorn.style.top = "-20px";
+    acorn.style.fontSize = 12 + Math.random() * 14 + "px";
+    acorn.style.animationDuration = 2 + Math.random() + "s";
 
-    // Slight sway effect
     const sway = Math.random() > 0.5 ? 1 : -1;
     acorn.style.setProperty("--sway-dir", sway);
 
