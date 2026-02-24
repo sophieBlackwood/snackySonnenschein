@@ -2,54 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mein Sonnenschen</title>
-  <link rel="stylesheet" href="https://use.typekit.net/rig8hkd.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Snacky Sonnenschein</title>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
-
 <body>
 
-<!-- Floating Theme Button -->
+<!-- Theme Toggle -->
 <div id="floating-buttons">
   <button id="theme-toggle" title="Toggle theme">
     <i class="fa-solid fa-moon"></i>
   </button>
 </div>
 
+<!-- MAIN CONTENT -->
 <main class="todo-wrapper">
 
   <div class="todo-card">
 
-    <h1 class="lighthouse-title">Mein Sonnenschen</h1>
-    <p class="subtitle">A sunBEAM!</p>
+    <h1 class="lighthouse-title">☀️ Snacky Sonnenschein</h1>
+    <p class="subtitle">Steady snacks. Steady sunshine.</p>
 
     <div class="todo-input-group">
-      <input 
-        type="text" 
-        id="task-input" 
-        placeholder="What needs doing, Brooklyn?"
-        autocomplete="off"
-      />
-      <button id="add-task" class="btn">
-        <i class="fa-solid fa-plus"></i>
-      </button>
+      <input type="text" id="task-input" placeholder="What needs doing?" autocomplete="off"/>
+      <button id="add-task" class="btn"><i class="fa-solid fa-plus"></i></button>
     </div>
 
     <ul id="task-list" class="todo-list"></ul>
 
-  </div>
+    <hr class="divider">
 
+    <!-- Mood check-in -->
+    <div class="mood-section">
+      <h2>How’s your sunshine feeling? 🌈</h2>
+      <div class="mood-buttons">
+        <button class="mood-btn" data-mood="😊">😊</button>
+        <button class="mood-btn" data-mood="😌">😌</button>
+        <button class="mood-btn" data-mood="😕">😕</button>
+        <button class="mood-btn" data-mood="😢">😢</button>
+      </div>
+      <p id="mood-display">Your mood will appear here.</p>
+    </div>
+
+  </div>
 </main>
 
-<!-- Reminder Card -->
 <div id="reminder-card" class="reminder-card hidden">
-  <h3>🌊 Lighthouse Check-In</h3>
+  <h3>🌞 Snack Reminder</h3>
   <p id="reminder-text"></p>
-  <button id="dismiss-reminder" class="btn-secondary">
-    okay okay
-  </button>
+  <button id="dismiss-reminder" class="btn-secondary">okay okay</button>
 </div>
 
 <script src="script.js"></script>
