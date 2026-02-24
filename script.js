@@ -1,6 +1,5 @@
 /* ============================= */
 /* ELEMENTS */
-/* ============================= */
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task");
 const taskList = document.getElementById("task-list");
@@ -10,12 +9,10 @@ const squirrelFact = document.getElementById("squirrel-fact");
 const newFactBtn = document.getElementById("new-fact");
 
 const TASKS_KEY = "snacky_tasks";
-
 let tasks = JSON.parse(localStorage.getItem(TASKS_KEY)) || [];
 
 /* ============================= */
 /* RENDER TASKS */
-/* ============================= */
 function renderTasks() {
   taskList.innerHTML = "";
 
@@ -44,7 +41,6 @@ renderTasks();
 
 /* ============================= */
 /* ADD TASK */
-/* ============================= */
 addTaskBtn.addEventListener("click", () => {
   const text = taskInput.value.trim();
   if (!text) return;
@@ -60,7 +56,6 @@ taskInput.addEventListener("keypress", (e) => {
 
 /* ============================= */
 /* COMPLETE TASK + ACORNS */
-/* ============================= */
 window.toggleTask = function(index) {
   tasks[index].completed = !tasks[index].completed;
   renderTasks();
@@ -69,7 +64,6 @@ window.toggleTask = function(index) {
 
 /* ============================= */
 /* FALLING ACORNS */
-/* ============================= */
 function launchAcorns() {
   for (let i = 0; i < 5; i++) {
     const acorn = document.createElement("div");
@@ -80,14 +74,12 @@ function launchAcorns() {
     acorn.style.top = rect.top + "px";
 
     document.body.appendChild(acorn);
-
     setTimeout(() => acorn.remove(), 1800);
   }
 }
 
 /* ============================= */
-/* TRASH ALL (CRUMPLE + CLEAR) */
-/* ============================= */
+/* TRASH ALL */
 trashBin.addEventListener("click", () => {
   const items = document.querySelectorAll(".todo-item");
   if (items.length === 0) return;
@@ -102,13 +94,12 @@ trashBin.addEventListener("click", () => {
     tasks = [];
     renderTasks();
     trashBin.classList.remove("shake");
-    launchAcorns(); // fun reward
+    launchAcorns();
   }, 800);
 });
 
 /* ============================= */
 /* SQUIRREL FACTS */
-/* ============================= */
 const squirrelFacts = [
   "Squirrels plant thousands of trees every year by forgetting where they buried acorns.",
   "A squirrel’s front teeth never stop growing.",
