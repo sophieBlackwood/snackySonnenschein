@@ -1,3 +1,7 @@
+/* ============================= */
+/* ELEMENTS */
+/* ============================= */
+
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task");
 const taskList = document.getElementById("task-list");
@@ -10,6 +14,7 @@ const TASKS_KEY = "snacky_tasks";
 
 let tasks = JSON.parse(localStorage.getItem(TASKS_KEY)) || [];
 
+
 /* ============================= */
 /* RENDER TASKS */
 /* ============================= */
@@ -20,7 +25,10 @@ function renderTasks() {
   tasks.forEach((task, index) => {
     const li = document.createElement("li");
     li.className = "todo-item";
-    if (task.completed) li.classList.add("completed");
+
+    if (task.completed) {
+      li.classList.add("completed");
+    }
 
     li.innerHTML = `
       <span>${task.text}</span>
@@ -39,6 +47,7 @@ function renderTasks() {
 
 renderTasks();
 
+
 /* ============================= */
 /* ADD TASK */
 /* ============================= */
@@ -47,14 +56,21 @@ addTaskBtn.addEventListener("click", () => {
   const text = taskInput.value.trim();
   if (!text) return;
 
-  tasks.push({ text, completed: false });
+  tasks.push({
+    text: text,
+    completed: false
+  });
+
   taskInput.value = "";
   renderTasks();
 });
 
 taskInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") addTaskBtn.click();
+  if (e.key === "Enter") {
+    addTaskBtn.click();
+  }
 });
+
 
 /* ============================= */
 /* COMPLETE TASK */
@@ -65,6 +81,7 @@ window.toggleTask = function(index) {
   renderTasks();
   launchConfetti();
 };
+
 
 /* ============================= */
 /* CONFETTI */
@@ -77,14 +94,18 @@ function launchConfetti() {
 
     piece.style.left = Math.random() * window.innerWidth + "px";
     piece.style.top = "50%";
-    piece.style.background =
-      ["#FFD700", "#FFEE58", "#FFA726", "#FFF176"][Math.floor(Math.random() * 4)];
+
+    const colors = ["#FFD700", "#FFEE58", "#FFA726", "#FFF176"];
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
 
     document.body.appendChild(piece);
 
-    setTimeout(() => piece.remove(), 1000);
+    setTimeout(() => {
+      piece.remove();
+    }, 1000);
   }
 }
+
 
 /* ============================= */
 /* TRASH ALL (CRUMPLE + CLEAR) */
@@ -93,17 +114,27 @@ function launchConfetti() {
 trashBin.addEventListener("click", () => {
   const items = document.querySelectorAll(".todo-item");
 
+  if (items.length === 0) return;
+
+  // Shake trash can
+  trashBin.classList.add("shake");
+
+  // Crumple animation
   items.forEach((item, i) => {
     setTimeout(() => {
       item.classList.add("crumple");
     }, i * 100);
   });
 
+  // Clear after animation
   setTimeout(() => {
     tasks = [];
     renderTasks();
+    trashBin.classList.remove("shake");
+    launchConfetti(); // fun bonus effect
   }, 800);
 });
+
 
 /* ============================= */
 /* SQUIRREL FACTS */
@@ -118,7 +149,8 @@ const squirrelFacts = [
   "They can rotate their ankles 180 degrees to climb down trees head-first.",
   "Baby squirrels are called kits.",
   "Squirrels have excellent memory… most of the time.",
-  "Even squirrels need snack breaks."
+  "Even squirrels need snack breaks.",
+  "Wingardium Leviosa!"
 ];
 
 function showRandomFact() {
@@ -127,4 +159,6 @@ function showRandomFact() {
 }
 
 newFactBtn.addEventListener("click", showRandomFact);
+
+// Show one on load
 showRandomFact();
