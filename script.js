@@ -1,25 +1,18 @@
-/* ================================================= */
-/* ELEMENTS */
-/* ================================================= */
-
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task");
 const taskList = document.getElementById("task-list");
+const trashBin = document.getElementById("trash-bin");
 
 const squirrelFact = document.getElementById("squirrel-fact");
 const newFactBtn = document.getElementById("new-fact");
 
-/* ================================================= */
-/* STORAGE */
-/* ================================================= */
-
 const TASKS_KEY = "snacky_tasks";
 
-/* ================================================= */
-/* TASKS */
-/* ================================================= */
-
 let tasks = JSON.parse(localStorage.getItem(TASKS_KEY)) || [];
+
+/* ============================= */
+/* RENDER TASKS */
+/* ============================= */
 
 function renderTasks() {
   taskList.innerHTML = "";
@@ -35,9 +28,6 @@ function renderTasks() {
         <button onclick="toggleTask(${index})">
           <i class="fa-solid fa-check"></i>
         </button>
-        <button onclick="deleteTask(${index})">
-          <i class="fa-solid fa-trash"></i>
-        </button>
       </div>
     `;
 
@@ -48,6 +38,10 @@ function renderTasks() {
 }
 
 renderTasks();
+
+/* ============================= */
+/* ADD TASK */
+/* ============================= */
 
 addTaskBtn.addEventListener("click", () => {
   const text = taskInput.value.trim();
@@ -62,19 +56,58 @@ taskInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") addTaskBtn.click();
 });
 
+/* ============================= */
+/* COMPLETE TASK */
+/* ============================= */
+
 window.toggleTask = function(index) {
   tasks[index].completed = !tasks[index].completed;
   renderTasks();
+  launchConfetti();
 };
 
-window.deleteTask = function(index) {
-  tasks.splice(index, 1);
-  renderTasks();
-};
+/* ============================= */
+/* CONFETTI */
+/* ============================= */
 
-/* ================================================= */
+function launchConfetti() {
+  for (let i = 0; i < 20; i++) {
+    const piece = document.createElement("div");
+    piece.classList.add("confetti");
+
+    piece.style.left = Math.random() * window.innerWidth + "px";
+    piece.style.top = "50%";
+    piece.style.background =
+      ["#FFD700", "#FFEE58", "#FFA726", "#FFF176"][Math.floor(Math.random() * 4)];
+
+    document.body.appendChild(piece);
+
+    setTimeout(() => piece.remove(), 1000);
+  }
+}
+
+/* ============================= */
+/* TRASH ALL (CRUMPLE + CLEAR) */
+/* ============================= */
+
+trashBin.addEventListener("click", () => {
+  const items = document.querySelectorAll(".todo-item");
+
+  items.forEach((item, i) => {
+    setTimeout(() => {
+      item.classList.add("crumple");
+    }, i * 100);
+  });
+
+  setTimeout(() => {
+    tasks = [];
+    renderTasks();
+  }, 800);
+});
+
+/* ============================= */
 /* SQUIRREL FACTS */
-/* ================================================= */
+/* ============================= */
 
 const squirrelFacts = [
   "Squirrels plant thousands of trees every year by forgetting where they buried acorns.",
@@ -84,8 +117,8 @@ const squirrelFacts = [
   "Some squirrels pretend to bury nuts to trick thieves watching them.",
   "They can rotate their ankles 180 degrees to climb down trees head-first.",
   "Baby squirrels are called kits.",
-  "Squirrels have excellent memory… most of the time."
-  "Wingardium Leviosa!"
+  "Squirrels have excellent memory… most of the time.",
+  "Even squirrels need snack breaks."
 ];
 
 function showRandomFact() {
@@ -94,5 +127,4 @@ function showRandomFact() {
 }
 
 newFactBtn.addEventListener("click", showRandomFact);
-
 showRandomFact();
