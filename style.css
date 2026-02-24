@@ -73,7 +73,7 @@ body {
   border-radius: 16px;
   border: 1px solid var(--border);
   font-size: 0.95rem;
-  background: #1e3a35;  /* slightly lighter input */
+  background: #1e3a35;
   color: var(--text);
   outline: none;
 }
@@ -87,7 +87,7 @@ body {
   border: none;
   padding: 0 1.2rem;
   border-radius: 16px;
-  color: #0f1f1d; /* dark text on bright accent */
+  color: #0f1f1d; 
   cursor: pointer;
   transition: 0.2s ease;
 }
@@ -113,7 +113,7 @@ body {
   justify-content: space-between;
   padding: 0.9rem 1rem;
   margin-bottom: 0.8rem;
-  background: #2a4a42; /* task background darker */
+  background: #2a4a42;
   border-radius: 16px;
   border: 1px solid var(--border);
   transition: 0.2s ease;
@@ -133,7 +133,6 @@ body {
   cursor: pointer;
 }
 
-/* ================================================= */
 /* DIVIDER */
 .divider {
   margin: 2rem 0;
@@ -142,7 +141,6 @@ body {
   background: var(--border);
 }
 
-/* ================================================= */
 /* SQUIRREL FACTS */
 .squirrel-section {
   min-height: 60px;
@@ -182,7 +180,6 @@ body {
   color: #0f1f1d;
 }
 
-/* ================================================= */
 /* CRUMPLE ANIMATION */
 @keyframes crumple {
   0% { transform: scale(1) rotate(0deg); opacity: 1; }
@@ -194,7 +191,6 @@ body {
   animation: crumple 0.7s forwards ease-in;
 }
 
-/* ================================================= */
 /* TRASH BIN */
 #trash-bin {
   position: fixed;
@@ -222,8 +218,7 @@ body {
   animation: shake 0.4s ease;
 }
 
-/* ================================================= */
-/* FALLING ACORNS (bounce on landing) */
+/* FALLING ACORNS */
 .acorn {
   position: fixed;
   font-size: 20px;
