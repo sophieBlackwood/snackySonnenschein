@@ -16,7 +16,7 @@
 html, body {
   height: 100%;
   margin: 0;
-  overflow: hidden;
+  overflow: hidden; /* lock in place */
 }
 
 body {
@@ -223,22 +223,20 @@ body {
 }
 
 /* ================================================= */
-/* FALLING ACORNS */
+/* FALLING ACORNS (bounce on landing) */
 .acorn {
   position: fixed;
-  width: 16px;
-  height: 24px;
-  background: url('https://i.imgur.com/xG6b3dP.png') no-repeat center / contain;
+  font-size: 20px;
+  color: #FF9F1C;
   pointer-events: none;
   z-index: 9999;
-  animation: fallAcornBounce 1.8s forwards;
+  animation: fallAcorn 2s forwards ease-in-out;
 }
 
-@keyframes fallAcornBounce {
+@keyframes fallAcorn {
   0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
-  60% { transform: translateY(180px) rotate(20deg); }
-  75% { transform: translateY(160px) rotate(25deg); }
-  85% { transform: translateY(180px) rotate(30deg); }
-  95% { transform: translateY(175px) rotate(35deg); }
-  100% { transform: translateY(180px) rotate(40deg); opacity: 1; }
+  70% { transform: translateY(85vh) rotate(20deg); }
+  85% { transform: translateY(80vh) rotate(25deg); } 
+  95% { transform: translateY(85vh) rotate(30deg); } 
+  100% { transform: translateY(85vh) rotate(35deg); opacity: 0; }
 }
