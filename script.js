@@ -178,6 +178,10 @@ const squirrelFacts = [
   "There are more trees on Earth than stars in the Milky Way.",
   "Time moves slightly faster on a mountain than at sea level.",
   "You are statistically more likely to die taking a selfie than from a shark attack.",
+
+  // LUKE
+  "Have you eaten today?",
+  "Wingardium Leviosa!",
 ];
 
 function showRandomFact() {
