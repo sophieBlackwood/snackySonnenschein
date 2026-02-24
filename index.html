@@ -10,31 +10,22 @@
 </head>
 
 <body>
+
 <main class="todo-wrapper">
   <div class="todo-card">
 
     <h1 class="lighthouse-title">☀️ Snacky Sonnenschein</h1>
-    <p class="subtitle">Jesus wants YOU for a Sunbeam</p>
 
-    <!-- INPUT -->
     <div class="todo-input-group">
-      <input 
-        type="text" 
-        id="task-input" 
-        placeholder="What needs doing?" 
-        autocomplete="off"
-      />
-      <button id="add-task" class="btn" aria-label="Add task">
+      <input type="text" id="task-input" placeholder="What needs doing?" autocomplete="off"/>
+      <button id="add-task" class="btn">
         <i class="fa-solid fa-plus"></i>
       </button>
     </div>
 
-    <!-- TASK LIST -->
     <ul id="task-list" class="todo-list"></ul>
-
     <hr class="divider">
 
-    <!-- SQUIRREL SECTION -->
     <div class="squirrel-section">
       <h2>🐿 Wizard Squirrel on a Roomba</h2>
       <p id="squirrel-fact"></p>
@@ -44,13 +35,11 @@
   </div>
 </main>
 
-<!-- FLOATING TRASH BIN -->
-<div id="trash-bin" aria-label="Clear all tasks">
+<!-- Trash Bin -->
+<div id="trash-bin" title="Drag task here to delete">
   <i class="fa-solid fa-trash"></i>
 </div>
 
-<!-- Script -->
 <script src="script.js"></script>
-
 </body>
 </html>
