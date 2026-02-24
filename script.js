@@ -1,4 +1,3 @@
-/* ============================= */
 /* ELEMENTS */
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task");
@@ -11,7 +10,6 @@ const newFactBtn = document.getElementById("new-fact");
 const TASKS_KEY = "snacky_tasks";
 let tasks = JSON.parse(localStorage.getItem(TASKS_KEY)) || [];
 
-/* ============================= */
 /* RENDER TASKS */
 function renderTasks() {
   taskList.innerHTML = "";
@@ -59,7 +57,6 @@ function renderTasks() {
 
 renderTasks();
 
-/* ============================= */
 /* ADD TASK */
 addTaskBtn.addEventListener("click", () => {
   const text = taskInput.value.trim();
@@ -74,7 +71,6 @@ taskInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") addTaskBtn.click();
 });
 
-/* ============================= */
 /* COMPLETE TASK + ACORNS */
 window.toggleTask = function(index) {
   tasks[index].completed = !tasks[index].completed;
