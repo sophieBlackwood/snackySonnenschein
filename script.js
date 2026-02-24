@@ -1,3 +1,4 @@
+/* ============================= */
 /* ELEMENTS */
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task");
@@ -10,6 +11,7 @@ const newFactBtn = document.getElementById("new-fact");
 const TASKS_KEY = "snacky_tasks";
 let tasks = JSON.parse(localStorage.getItem(TASKS_KEY)) || [];
 
+/* ============================= */
 /* RENDER TASKS */
 function renderTasks() {
   taskList.innerHTML = "";
@@ -34,7 +36,7 @@ function renderTasks() {
     taskList.appendChild(li);
 
     // Drag events
-    li.addEventListener("dragstart", (e) => {
+    li.addEventListener("dragstart", () => {
       li.classList.add("dragging");
     });
 
@@ -57,6 +59,7 @@ function renderTasks() {
 
 renderTasks();
 
+/* ============================= */
 /* ADD TASK */
 addTaskBtn.addEventListener("click", () => {
   const text = taskInput.value.trim();
@@ -71,6 +74,7 @@ taskInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") addTaskBtn.click();
 });
 
+/* ============================= */
 /* COMPLETE TASK + ACORNS */
 window.toggleTask = function(index) {
   tasks[index].completed = !tasks[index].completed;
@@ -79,17 +83,24 @@ window.toggleTask = function(index) {
 };
 
 /* ============================= */
-/* FALLING ACORNS */
+/* FALLING ACORNS (Font Awesome) */
 function launchAcorns() {
   for (let i = 0; i < 5; i++) {
-    const acorn = document.createElement("div");
-    acorn.classList.add("acorn");
+    const acorn = document.createElement("i");
+    acorn.classList.add("fa-solid", "fa-acorn", "acorn");
 
     acorn.style.left = Math.random() * window.innerWidth + "px";
-    acorn.style.top = "0px";
+    acorn.style.top = "-20px"; // start above screen
+    acorn.style.fontSize = 12 + Math.random() * 12 + "px"; // random size
+    acorn.style.animationDuration = 2 + Math.random() + "s"; // random speed
+
+    // Slight sway effect
+    const sway = Math.random() > 0.5 ? 1 : -1;
+    acorn.style.setProperty("--sway-dir", sway);
 
     document.body.appendChild(acorn);
-    setTimeout(() => acorn.remove(), 1800);
+
+    setTimeout(() => acorn.remove(), 2500);
   }
 }
 
