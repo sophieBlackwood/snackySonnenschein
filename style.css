@@ -1,23 +1,24 @@
-/* ---- ROOT VARIABLES ---- */
 :root {
-  --bg: #f4fbfa;
-  --card-bg: #1f4e4a;
-  --accent: #5fb3a7;
-  --accent-light: #8fd6cc;
-  --text-dark: #123432;
-  --muted: #6c8f8c;
-  --always-light-text: #ffffff;
+  --bg: #FFF8E7;
+  --card-bg: #FFD966;
+  --accent: #FFB347;
+  --accent-light: #FFE08A;
+  --text-dark: #4B3F2F;
+  --muted: #7A5C3D;
+  --always-light-text: #4B3F2F;
 
   --radius: 16px;
   --transition: 0.3s ease;
 }
+
 body.dark {
-  --bg: #0f2a28;
-  --card-bg: #163c39;
-  --accent: #4ea398;
-  --accent-light: #7fc9bf;
-  --text-dark: #e6f7f5;
-  --muted: #a6c9c5;
+  --bg: #3B2F2F;
+  --card-bg: #4E3B2F;
+  --accent: #FFB347;
+  --accent-light: #FFE08A;
+  --text-dark: #FFF8E7;
+  --muted: #D6C1A3;
+  --always-light-text: #FFF8E7;
 }
 
 /* ---- GLOBAL ---- */
