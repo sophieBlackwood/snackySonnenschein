@@ -85,6 +85,7 @@ const squirrelFacts = [
   "They can rotate their ankles 180 degrees to climb down trees head-first.",
   "Baby squirrels are called kits.",
   "Squirrels have excellent memory… most of the time."
+  "Wingardium Leviosa!"
 ];
 
 function showRandomFact() {
