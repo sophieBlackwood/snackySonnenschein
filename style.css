@@ -1,19 +1,18 @@
 /* ================================================= */
-/* ROOT / COLORS */
+/* ROOT / COLORS - Dark Fall Palette */
 /* ================================================= */
 :root {
-  --bg: #FFF5E6;          
-  --card-bg: #FFDFAE;     
-  --text: #4B2E05;        
-  --accent: #FF8C42;      
-  --accent-light: #FFB374;
-  --border: #E6C99F;      
-  --shadow: 0 18px 60px rgba(0,0,0,0.2);
+  --bg: #0f1f1d;          /* Dark background */
+  --card-bg: #1a322f;     /* Darker card */
+  --text: #F2F2EA;        /* Light text */
+  --accent: #FF9F1C;      /* Fall-orange accent */
+  --accent-light: #FFB94D;/* Lighter accent on hover */
+  --border: #2e4a42;      /* Slightly lighter for borders */
+  --shadow: 0 18px 60px rgba(0,0,0,0.4);
 }
 
 /* ================================================= */
 /* BODY / LAYOUT */
-/* ================================================= */
 html, body {
   height: 100%;
   margin: 0;
@@ -48,7 +47,6 @@ body {
 
 /* ================================================= */
 /* HEADER */
-/* ================================================= */
 .lighthouse-title {
   margin: 0;
   font-size: 1.9rem;
@@ -63,7 +61,6 @@ body {
 
 /* ================================================= */
 /* INPUT GROUP */
-/* ================================================= */
 .todo-input-group {
   display: flex;
   margin-top: 1.8rem;
@@ -76,7 +73,7 @@ body {
   border-radius: 16px;
   border: 1px solid var(--border);
   font-size: 0.95rem;
-  background: transparent;
+  background: #1e3a35;  /* slightly lighter input */
   color: var(--text);
   outline: none;
 }
@@ -90,7 +87,7 @@ body {
   border: none;
   padding: 0 1.2rem;
   border-radius: 16px;
-  color: #FFF5E6;
+  color: #0f1f1d; /* dark text on bright accent */
   cursor: pointer;
   transition: 0.2s ease;
 }
@@ -102,7 +99,6 @@ body {
 
 /* ================================================= */
 /* TASK LIST */
-/* ================================================= */
 .todo-list {
   list-style: none;
   padding: 0;
@@ -117,11 +113,12 @@ body {
   justify-content: space-between;
   padding: 0.9rem 1rem;
   margin-bottom: 0.8rem;
-  background: #FFE2B3;
+  background: #2a4a42; /* task background darker */
   border-radius: 16px;
   border: 1px solid var(--border);
   transition: 0.2s ease;
   cursor: grab;
+  color: var(--text);
 }
 
 .todo-item.completed {
@@ -138,7 +135,6 @@ body {
 
 /* ================================================= */
 /* DIVIDER */
-/* ================================================= */
 .divider {
   margin: 2rem 0;
   border: none;
@@ -148,9 +144,8 @@ body {
 
 /* ================================================= */
 /* SQUIRREL FACTS */
-/* ================================================= */
 .squirrel-section {
-  min-height: 60px; 
+  min-height: 60px;
 }
 
 #squirrel-fact {
@@ -158,10 +153,10 @@ body {
   opacity: 0.85;
   line-height: 1.5;
   min-height: 48px;
-  max-height: 60px;  
+  max-height: 60px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3; 
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
@@ -184,12 +179,11 @@ body {
 
 .btn-secondary:hover {
   background: var(--accent);
-  color: #FFF5E6;
+  color: #0f1f1d;
 }
 
 /* ================================================= */
 /* CRUMPLE ANIMATION */
-/* ================================================= */
 @keyframes crumple {
   0% { transform: scale(1) rotate(0deg); opacity: 1; }
   40% { transform: scale(0.85) rotate(5deg); }
@@ -202,7 +196,6 @@ body {
 
 /* ================================================= */
 /* TRASH BIN */
-/* ================================================= */
 #trash-bin {
   position: fixed;
   bottom: 20px;
@@ -210,6 +203,7 @@ body {
   font-size: 1.8rem;
   cursor: pointer;
   z-index: 1000;
+  color: var(--accent);
   transition: transform 0.2s ease;
 }
 
@@ -230,7 +224,6 @@ body {
 
 /* ================================================= */
 /* FALLING ACORNS */
-/* ================================================= */
 .acorn {
   position: fixed;
   width: 16px;
