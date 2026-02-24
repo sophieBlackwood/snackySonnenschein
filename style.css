@@ -20,7 +20,7 @@ html, body {
 }
 
 body {
-  font-family: "Idiqlat", system-ui, sans-serif;
+  font-family: "Caveat", system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   display: flex;
