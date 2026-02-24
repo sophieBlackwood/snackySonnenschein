@@ -19,6 +19,8 @@ function renderTasks() {
   tasks.forEach((task, index) => {
     const li = document.createElement("li");
     li.className = "todo-item";
+    li.setAttribute("draggable", "true");
+    li.dataset.index = index;
 
     if (task.completed) li.classList.add("completed");
 
@@ -32,6 +34,24 @@ function renderTasks() {
     `;
 
     taskList.appendChild(li);
+
+    // Drag events
+    li.addEventListener("dragstart", (e) => {
+      li.classList.add("dragging");
+    });
+
+    li.addEventListener("dragend", (e) => {
+      li.classList.remove("dragging");
+      const rect = trashBin.getBoundingClientRect();
+      if (
+        e.pageX >= rect.left &&
+        e.pageX <= rect.right &&
+        e.pageY >= rect.top &&
+        e.pageY <= rect.bottom
+      ) {
+        removeTask(index, li);
+      }
+    });
   });
 
   localStorage.setItem(TASKS_KEY, JSON.stringify(tasks));
@@ -69,9 +89,8 @@ function launchAcorns() {
     const acorn = document.createElement("div");
     acorn.classList.add("acorn");
 
-    const rect = taskList.getBoundingClientRect();
-    acorn.style.left = rect.left + Math.random() * rect.width + "px";
-    acorn.style.top = rect.top + "px";
+    acorn.style.left = Math.random() * window.innerWidth + "px";
+    acorn.style.top = "0px";
 
     document.body.appendChild(acorn);
     setTimeout(() => acorn.remove(), 1800);
@@ -79,24 +98,20 @@ function launchAcorns() {
 }
 
 /* ============================= */
-/* TRASH ALL */
-trashBin.addEventListener("click", () => {
-  const items = document.querySelectorAll(".todo-item");
-  if (items.length === 0) return;
-
-  trashBin.classList.add("shake");
-
-  items.forEach((item, i) => {
-    setTimeout(() => item.classList.add("crumple"), i * 100);
-  });
+/* REMOVE SINGLE TASK */
+function removeTask(index, liElement) {
+  liElement.classList.add("crumple");
 
   setTimeout(() => {
-    tasks = [];
+    tasks.splice(index, 1);
     renderTasks();
-    trashBin.classList.remove("shake");
     launchAcorns();
-  }, 800);
-});
+  }, 700);
+
+  // Shake trash bin
+  trashBin.classList.add("shake");
+  setTimeout(() => trashBin.classList.remove("shake"), 400);
+}
 
 /* ============================= */
 /* SQUIRREL FACTS */
