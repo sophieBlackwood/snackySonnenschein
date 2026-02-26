@@ -3,7 +3,7 @@
 /* ================================================= */
 :root {
   --bg: #0f1f1d;          
-  --text: #F2F2EA;        
+  --text: #000000;        /* F2F2EA */
   --accent: #FF9F1C;      
   --accent-light: #FFB94D;
   --border: rgba(255,255,255,0.08);
