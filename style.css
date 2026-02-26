@@ -52,9 +52,7 @@ body {
   transition: background 0.6s ease-in-out;
 }
 
-/* ================================================= */
-/* GLASSY TODO CARD - Slightly Less Transparent */
-/* ================================================= */
+/* GLASSY TODO CARD */
 .todo-wrapper {
   width: 100%;
   display: flex;
@@ -69,8 +67,8 @@ body {
   padding: 2.5rem;
   border-radius: 28px;
 
-  /* GLASS EFFECT - more opaque */
-  background: rgba(255, 255, 255, 0.20); /* was 0.14 → now easier to read */
+  /* GLASS EFFECT */
+  background: rgba(255, 255, 255, 0.20);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border);
@@ -81,24 +79,14 @@ body {
     inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
-/* ================================================= */
 /* HEADER */
-/* ================================================= */
 .lighthouse-title {
   margin: 0;
   font-size: 1.9rem;
   font-weight: 700;
 }
 
-.subtitle {
-  margin-top: 0.4rem;
-  font-size: 0.9rem;
-  opacity: 0.7;
-}
-
-/* ================================================= */
 /* INPUT GROUP */
-/* ================================================= */
 .todo-input-group {
   display: flex;
   margin-top: 1.8rem;
@@ -111,7 +99,7 @@ body {
   border-radius: 16px;
   border: 1px solid var(--border);
   font-size: 0.95rem;
-  background: rgba(0,0,0,0.28); /* slightly darker for better readability */
+  background: rgba(0,0,0,0.28); 
   color: var(--text);
   outline: none;
 }
@@ -135,9 +123,7 @@ body {
   background: var(--accent-light);
 }
 
-/* ================================================= */
 /* TASK LIST */
-/* ================================================= */
 .todo-list {
   list-style: none;
   padding: 0;
@@ -152,7 +138,7 @@ body {
   justify-content: space-between;
   padding: 0.9rem 1rem;
   margin-bottom: 0.8rem;
-  background: rgba(0,0,0,0.28); /* slightly darker for better readability */
+  background: rgba(0,0,0,0.28); 
   border-radius: 16px;
   border: 1px solid var(--border);
   transition: 0.2s ease;
@@ -172,9 +158,7 @@ body {
   cursor: pointer;
 }
 
-/* ================================================= */
 /* DIVIDER */
-/* ================================================= */
 .divider {
   margin: 2rem 0;
   border: none;
@@ -182,9 +166,7 @@ body {
   background: var(--border);
 }
 
-/* ================================================= */
 /* SQUIRREL FACTS */
-/* ================================================= */
 .squirrel-section {
   min-height: 60px;
 }
@@ -223,9 +205,7 @@ body {
   color: #0f1f1d;
 }
 
-/* ================================================= */
 /* CRUMPLE ANIMATION */
-/* ================================================= */
 @keyframes crumple {
   0% { transform: scale(1) rotate(0deg); opacity: 1; }
   40% { transform: scale(0.85) rotate(5deg); }
@@ -236,14 +216,12 @@ body {
   animation: crumple 0.7s forwards ease-in;
 }
 
-/* ================================================= */
-/* TRASH BIN - LARGER & POLISHED */
-/* ================================================= */
+/* TRASH BIN */
 #trash-bin {
   position: fixed;
   bottom: 28px;
   right: 28px;
-  font-size: 3rem; /* larger */
+  font-size: 3rem;
   padding: 0.5rem;
   cursor: pointer;
   z-index: 1000;
