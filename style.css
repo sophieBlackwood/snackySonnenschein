@@ -70,10 +70,9 @@ body {
   border-radius: 28px;
 
   /* GLASS EFFECT - more opaque */
-  background: rgba(255, 255, 255, 0.14); /* was 0.06 → now easier to read */
+  background: rgba(255, 255, 255, 0.20); /* was 0.14 → now easier to read */
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-
   border: 1px solid var(--border);
 
   /* Depth */
